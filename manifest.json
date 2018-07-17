@@ -1,0 +1,29 @@
+{
+  "name": "Eksi Bookmark",
+  "version": "1.0",
+  "description": "Entryleri sonradan okumak icin saklayin.",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "favicon16.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://eksisozluk.com/*"],
+      "run_at": "document_end",
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "icons": {
+    "16": "favicon16.png",
+    "32": "favicon16.png"
+  },
+  "manifest_version": 2
+}
