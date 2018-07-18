@@ -9,7 +9,8 @@
   },
   "page_action": {
     "default_icon": {
-      "16": "favicon16.png"
+      "16": "favicon16.png",
+      "32": "favicon32.png"
     }
   },
   "content_scripts": [
@@ -22,7 +23,7 @@
   ],
   "icons": {
     "16": "favicon16.png",
-    "32": "favicon16.png"
+    "32": "favicon32.png"
   },
   "manifest_version": 2
 }

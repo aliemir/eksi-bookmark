@@ -73,6 +73,7 @@
   display: block;
 }
 .bookmark-sil-icon {
+  fill: #2d2d2d !important;
   height: 1em !important;
   width: 1em !important;
 }
@@ -90,6 +91,7 @@ span.bookmark-sil {
 }
 .bookmark-ul > li:hover {
   list-style: circle;
+  color: #2d2d2d;
 }
 li:hover span.bookmark-sil {
   display: inline;
