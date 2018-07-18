@@ -1,37 +1,98 @@
+/* Entry alti bookmark */
+.bookmark {
+  float: right;
+}
+/*    */
+
+/* Header bookmark butonu */
+.bookmarks-modal-icon {
+  fill: #2d2d2d !important;
+  stroke-width: 2 !important;
+  stroke: #bdbdbd !important;
+}
+#bookmarks-modal-btn {
+  cursor: pointer;
+}
+#bookmarks-modal-btn:hover,
+#bookmarks-modal-btn:focus {
+  text-decoration: underline;
+}
+/*    */
+
+/* Bookmark Modal */
+.bm-modal-content h1 {
+  color: #2d2d2d;
+  font-weight: 600;
+  font-size: 21px;
+}
 .bookmark-modal {
   display: none;
   position: fixed;
-  z-index: 2002;
+  z-index: 9999;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal-content {
+.bm-modal-content {
+  color: #666;
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #666;
   width: 40%;
   min-width: 400px;
+  border-radius: 10px;
 }
 @media (max-width: 600px) {
   .modal-content {
     margin: 35% auto;
   }
 }
-/* The Close Button */
 .bookmarks-modal-close {
+  margin-top: -20px;
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-
 .bookmarks-modal-close:hover,
 .bookmarks-modal-close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
+/* Modal List */
+.bm-title {
+  cursor: pointer;
+}
+.bm-info-small {
+  color: #a9a9a9;
+  font-size: 7pt;
+  display: block;
+}
+.bookmark-sil-icon {
+  height: 1em !important;
+  width: 1em !important;
+}
+.bm-info-small span {
+  margin-right: 5px;
+}
+.bookmark-ul {
+  list-style: initial;
+  margin-left: 20px;
+}
+span.bookmark-sil {
+  display: none;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.bookmark-ul > li:hover {
+  list-style: circle;
+}
+li:hover span.bookmark-sil {
+  display: inline;
+}
+/*    */
+/*    */
