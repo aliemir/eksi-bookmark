@@ -54,7 +54,7 @@ function updateListHtml() {
       bookmarks[i].entry_id
     }"><span class="bm-title">${
       bookmarks[i].title
-    }</span><span class="bookmark-sil"><svg class="icon eksico bookmark-sil-icon"><use xlink:href="#icon-bin"></use></svg></span><span class="bm-info-small"><span class="bm-author">${
+    }</span><span class="bookmark-sil"><svg class="icon eksico bookmark-sil-icon"><use class="bookmark-sil-icon-use" xlink:href="#icon-bin"></use></svg></span><span class="bm-info-small"><span class="bm-author">${
       bookmarks[i].author
     }</span><span class="bm-entry-id">(#${
       bookmarks[i].entry_id
@@ -84,12 +84,12 @@ function addButtonsToEntries() {
     if (!alreadyInTheList(el.parentNode.parentNode.getAttribute('data-id'))) {
       el.insertAdjacentHTML(
         'beforeend',
-        '<span class="bookmark"><a class="bookmark-link" title="yerimi ekle" aria-label="yerimi ekle"><svg class="icon eksico"><use xlink:href="#icon-bookmark"></use></svg></a></span>'
+        '<span class="bookmark-link"><svg class="icon eksico bookmark-link-icon-svg"><use class="bookmark-link-icon" xlink:href="#icon-bookmark"></use></svg></span>'
       );
     } else {
       el.insertAdjacentHTML(
         'beforeend',
-        '<span class="bookmark"><a class="bookmark-link favorited" title="yerimi ekle" aria-label="yerimi ekle"><svg class="icon eksico"><use xlink:href="#icon-bookmark"></use></svg></a></span>'
+        '<span class="bookmark-link favorited"><svg class="icon eksico bookmark-link-icon-svg"><use class="bookmark-link-icon" xlink:href="#icon-bookmark"></use></svg></span>'
       );
     }
   });
@@ -113,26 +113,53 @@ function modalFunctions() {
     }
   };
 }
+
 loadListFromLocalStorage();
 injectHtml();
 modalFunctions();
 
 document.querySelector('.bm-modal-content').onclick = function(e) {
+  console.log(e.target);
   if (e.target.classList.contains('bm-title') == true) {
     window.location.href =
       entry_url + e.target.parentNode.getAttribute('entry_id');
-  } else if (e.target.classList.contains('bookmark-sil') == true) {
-    removeBookmarkFromList(e.target.parentNode.getAttribute('entry_id'));
-    e.target.parentNode.style.display = 'none';
+  } else if (
+    e.target.classList.contains('bookmark-sil') == true ||
+    e.target.classList.contains('bookmark-sil-icon') == true ||
+    e.target.classList.contains('bookmark-sil-icon-use')
+  ) {
+    var item = e.target;
+    if (e.target.classList.contains('bookmark-sil-icon') == true) {
+      item = item.parentNode;
+    }
+    if (e.target.classList.contains('bookmark-sil-icon-use')) {
+      item = item.parentNode.parentNode;
+    }
+    removeBookmarkFromList(item.parentNode.getAttribute('entry_id'));
+    item.parentNode.style.display = 'none';
   }
-  console.log('click inside modal');
 };
-document.querySelector('.feedback').onclick = function(e) {
-  if (e.target.classList.contains('bookmark-link') == true) {
-    var current = e.target.parentNode.parentNode.parentNode.parentNode;
+document.querySelector('#entry-item-list').onclick = function(e) {
+  var item = e.target;
+  if (
+    item.classList.contains('bookmark-link') == true ||
+    item.classList.contains('bookmark-link-icon') == true ||
+    item.classList.contains('bookmark-link-icon-svg') == true
+  ) {
+    if (item.classList.contains('bookmark-link-icon') == true) {
+      item = item.parentNode.parentNode;
+    }
+    if (item.classList.contains('bookmark-link-icon-svg') == true) {
+      item = item.parentNode;
+    }
+    if (item.classList.contains('bookmark-link') == true) {
+      item = item;
+    }
+    var current = item.parentNode.parentNode.parentNode;
+
     if (alreadyInTheList(current.getAttribute('data-id'))) {
       removeBookmarkFromList(current.getAttribute('data-id'));
-      e.target.classList.remove('favorited');
+      item.classList.remove('favorited');
     } else {
       var b = new bookmark(
         document.title.split(' - ')[0],
@@ -140,7 +167,7 @@ document.querySelector('.feedback').onclick = function(e) {
         current.getAttribute('data-author')
       );
       addBookmarkToList(b);
-      e.target.classList.add('favorited');
+      item.classList.add('favorited');
     }
   }
 };

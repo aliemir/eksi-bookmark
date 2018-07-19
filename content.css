@@ -1,6 +1,7 @@
 /* Entry alti bookmark */
-.bookmark {
+.bookmark-link {
   float: right;
+  cursor: pointer;
 }
 /*    */
 
