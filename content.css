@@ -28,6 +28,8 @@
 }
 .bookmark-modal {
   display: none;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -39,10 +41,9 @@
 .bm-modal-content {
   color: #666;
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #666;
-  width: 40%;
+  width: 50%;
   min-width: 400px;
   border-radius: 10px;
 }
@@ -84,6 +85,8 @@
 .bookmark-ul {
   list-style: initial;
   margin-left: 20px;
+  height: 60vh;
+  overflow: scroll;
 }
 span.bookmark-sil {
   display: none;

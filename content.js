@@ -102,7 +102,7 @@ function modalFunctions() {
   )[0];
   modal_btn.onclick = function() {
     updateListHtml();
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
   };
   modal_close_span.onclick = function() {
     modal.style.display = 'none';
