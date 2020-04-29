@@ -1,33 +1,32 @@
-/* Entry alti bookmark */
+/* Entry Bookmark Button */
 .bookmark-link {
   float: right;
   cursor: pointer;
 }
-/*    */
 
-/* Header bookmark butonu */
-.bookmarks-modal-icon {
-  fill: #2d2d2d !important;
-  stroke-width: 2 !important;
-  stroke: #bdbdbd !important;
+span.bookmark-link.favorited > svg.bookmark-link-icon-svg {
+  color: #81c14b !important;
 }
+
+/* Bookmarks Nav Button */
 #bookmarks-modal-btn {
+  padding: 0 10px;
   cursor: pointer;
 }
 #bookmarks-modal-btn:hover,
 #bookmarks-modal-btn:focus {
   text-decoration: underline;
 }
-/*    */
+.bookmarks-modal-icon {
+  fill: none !important;
+}
 
 /* Bookmark Modal */
-.bm-modal-content h1 {
-  color: #2d2d2d;
-  font-weight: 600;
-  font-size: 21px;
-}
 .bookmark-modal {
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s opacity ease;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -38,8 +37,20 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
+.bookmark-modal.modal-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s opacity ease;
+}
+body.modal-visible {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .bm-modal-content {
-  color: #666;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
   background-color: #fefefe;
   padding: 20px;
   border: 1px solid #666;
@@ -47,16 +58,25 @@
   min-width: 400px;
   border-radius: 10px;
 }
-@media (max-width: 600px) {
-  .modal-content {
-    margin: 35% auto;
-  }
+.bm-modal-content .bm-modal-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.bm-modal-header h1 {
+  margin: 0;
+  color: #2d2d2d;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 21px;
 }
 .bookmarks-modal-close {
-  margin-top: -20px;
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
+  margin-left: auto;
+  margin-right: 10px;
+  color: #aaa;
+  font-size: 36px;
+  line-height: 36px;
   font-weight: bold;
 }
 .bookmarks-modal-close:hover,
@@ -65,13 +85,31 @@
   text-decoration: none;
   cursor: pointer;
 }
+.bookmark-ul {
+  list-style: none;
+  padding: 0 20px;
+  flex: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 /* Modal List */
+.bookmark-ul > li {
+  color: #999;
+  padding-bottom: 8px;
+  transition: 0.3s color ease;
+}
+.bookmark-ul > li:hover {
+  color: #2d2d2d;
+}
 .bm-title {
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
 }
 .bm-info-small {
-  color: #a9a9a9;
-  font-size: 7pt;
+  color: #999;
+  font-size: 12px;
   display: block;
 }
 .bookmark-sil-icon {
@@ -80,25 +118,17 @@
   width: 1em !important;
 }
 .bm-info-small span {
-  margin-right: 5px;
-}
-.bookmark-ul {
-  list-style: initial;
-  margin-left: 20px;
-  height: 60vh;
-  overflow: scroll;
+  margin-right: 12px;
 }
 span.bookmark-sil {
-  display: none;
+  display: inline;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s opacity ease;
   margin-left: 20px;
   cursor: pointer;
 }
-.bookmark-ul > li:hover {
-  list-style: circle;
-  color: #2d2d2d;
-}
 li:hover span.bookmark-sil {
-  display: inline;
+  visibility: visible;
+  opacity: 1;
 }
-/*    */
-/*    */
